@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Listado de Contactos</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f0f0f0; margin: 0; padding: 0; }
+        .container { max-width: 1000px; margin: 40px auto; background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 0 12px rgba(0, 0, 0, 0.1); }
+        h2 { text-align: center; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 12px; border: 1px solid #ccc; text-align: center; }
+        th { background-color: #007bff; color: white; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        .acciones a { color: red; text-decoration: none; }
+        .logout { text-align: center; margin-top: 1rem; }
+    </style>
+</head>
+<body>
+<div class="container">
+ <h2>Lista de Contactos Registrados</h2>
+<table>
+<thead>
+ <tr>
+<th>Cédula</th>
+<th>Nombre</th>
+ <th>Teléfono</th>
+<th>Dirección</th>
+<th>Estrato</th>
+<th>EPS</th>
+<th>Fecha</th>
+<th>Correo</th>
+<th>Eliminar</th>
+</tr>
+</thead>
+<tbody>
+ {% for p in personas %}
+ <tr>
+<td>{{ p[0] }}</td>
+<td>{{ p[1] }}</td>
+<td>{{ p[2] }}</td>
+ <td>{{ p[3] }}</td>
+<td>{{ p[4] }}</td>
+<td>{{ p[5] }}</td>
+<td>{{ p[6] }}</td>
+<td>{{ p[7] }}</td>
+<td><a href="/eliminar/{{ p[0] }}" onclick="return confirm('¿Deseas eliminar este registro?')">Eliminar</a></td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+ <div class="logout">
+<a href="{{ url_for('formulario') }}">Cerrar sesión</a>
+</div>
+<script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</div>
+</body>
+</html>

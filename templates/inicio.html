@@ -1,0 +1,61 @@
+<!-- inicio.html limpio -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>balatro balatre</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main_inicio_home.css') }}">
+</head>
+<body>
+    <header>
+        <h1 class="fade-in">proyecto de programacion orientada a objetos</h1>
+        <p class="fade-in">pasion, sabor y suerte a favor</p>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2 class="fade-in">Bienvenido profesor a mi proyecto</h2>
+            <p class="fade-in">mi trabajo se centra mas en la forma de aplicar la base de datos
+                junto con python en un ambiente laborañ, por eso decidi crear esta paguina mas
+                enfocado en lo laboral y no en un portafolios personal.
+            </p>
+        </section>
+
+        <section>
+            <h2 class="fade-in">¿como lo realize?</h2>
+            <p class="fade-in">
+               Por supuesto este trabajo se realizo principalmente por chatgpt, pero este mismo 
+               genera el codigo con un problema grave, la dificultad de hacer cambios despues 
+               de agregar alguna opcion y implementar herramientas como mysql o puTTY.
+            </p>
+        </section>
+
+        <section>
+            <h2 class="fade-in">proceso de realizacion de este proyecto</h2>
+            <ul class="fade-in">
+                <li>pensar en la idea y planeacion de proyecto –-- creacion del html y css como base</li>
+                <li>pedirle a chatgpt el python y javascript –---- arreglar la cantidad inmensa de errores</li>
+                <li>creacion de base de datos con xampp –--- cambio por mysql por comodidad</li>
+                <li>traslado a railwey (chatgpt no ayudo mucho) –--- corregir errores graves y quedo bien</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2 class="fade-in">¿que aprendi de todo esto?</h2>
+            <p class="fade-in">
+               Aprendi que chatgpt funciona hasta cierto punto, pero sirve como base para cualquier proyecto.
+               Aunque ya tenia una base, aprendi mucho de mysql, python, puTTY, entre otras herramientas.
+            </p>
+        </section>
+
+        <a href="{{ url_for('formulario') }}"><button>Ir al Formulario</button></a>
+    </div>
+
+    <footer class="fade-in">
+        &copy; Proyecto creado unicamente para estudio. Todos los derechos reservados para Wilder. 2025
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main_inicio_home.js') }}"></script>
+</body>
+</html>

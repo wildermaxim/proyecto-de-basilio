@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Registro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="formulario">
+        <h2>Formulario de Registro</h2>
+        <form method="POST" action="{{ url_for('agregar') }}">
+            <input type="text" name="cedula" placeholder="Cédula de ciudadanía" required>
+            <input type="text" name="nombre" placeholder="Nombre completo" required>
+            <input type="text" name="telefono" placeholder="Teléfono">
+            <input type="text" name="direccion" placeholder="Dirección de vivienda" required>
+            <input type="text" name="estrato" placeholder="Estrato del individuo" required>
+            <input type="text" name="eps" placeholder="EPS" required>
+            <input type="date" name="fecha" placeholder="Fecha de nacimiento" required>
+            <input type="email" name="correo" placeholder="Correo electrónico" required>
+            <button type="submit">Enviar</button>
+        </form>
+        <a href="{{ url_for('formulario') }}" class="btn-volver">Volver</a>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>
