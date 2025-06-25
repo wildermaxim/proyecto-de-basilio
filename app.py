@@ -1,28 +1,18 @@
 from flask import Flask, render_template, request, redirect, session, flash, url_for
 import mysql.connector
 from mysql.connector import Error
-import threading
-import webbrowser
 import smtplib
 from email.message import EmailMessage
 from datetime import datetime
-from flask import Flask, render_template, request, redirect, url_for, flash
+import os
 
 app = Flask(__name__)
-app.secret_key = 'clave_secreta'  # Necesario para flash
+app.secret_key = 'clave_segura_para_sesiones'
 
-@app.route('/agregar', methods=['GET', 'POST'])
-def agregar():
-    if request.method == 'POST':
-        # Aquí iría el guardado en base de datos, etc.
-        flash("Este mensaje muestra que se envió el formulario exitosamente.")
-        return redirect(url_for('home'))  # Redirige a home.html
-    return render_template('agregar.html')
-
-# Conexión a la base de datos con puerto 3307
+# Conexión a la base de datos
 try:
     conexion = mysql.connector.connect(
-        host="localhost",
+        host="localhost",     # Más adelante esto debe cambiar si usas Railway o PlanetScale
         port=3307,
         user="root",
         password="vt3525holapt",
@@ -31,13 +21,9 @@ try:
     print("Conexión exitosa.")
 except Error as err:
     print("Error al conectar:", err)
-    input("Presiona Enter para salir...")
     exit()
 
 cursor = conexion.cursor()
-
-app = Flask(__name__)
-app.secret_key = 'clave_segura_para_sesiones'
 
 # Función para enviar correo
 def enviar_correo_registro(datos):
@@ -146,8 +132,7 @@ def eliminar(cedula):
     flash("Registro eliminado.", "mensaje")
     return redirect(url_for('index'))
 
+# Punto de entrada
 if __name__ == '__main__':
-    def abrir_navegador():
-        webbrowser.open_new("http://127.0.0.1:5000")
-    threading.Timer(1, abrir_navegador).start()
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
